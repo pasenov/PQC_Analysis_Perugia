@@ -13,26 +13,29 @@ import numpy as np
 
 class WinGCD:
     def __init__(self, root,title,fname,const,save):
-        self.root = root
-        self.root.geometry("+150+50")
+        self.root = root 
         self.fname =fname
         self.const=const
         self.title=title
         self.save=save
+        self.root.geometry("+150+50")
         self.root.wm_title(self.title)
         self.sMin1=StringVar()
-        self.sMin1.set("-8")
+        self.sMin1.set("-7.2")
         self.sMax1=StringVar()
-        self.sMax1.set("-2.5")
+        self.sMax1.set("-6.7")
         self.sMin2=StringVar()
-        self.sMin2.set("-1")
+        self.sMin2.set("-6.9")
         self.sMax2=StringVar()
-        self.sMax2.set("4")
+        self.sMax2.set("-3")
         
         frame = Frame(self.root, relief=RAISED, borderwidth=1)
         frame.pack(fill=BOTH, expand=True)
         frameD1 = Frame(self.root)
         frameD1.pack(fill=BOTH, expand=True)
+        #frameD2 = Frame(self.root)
+        #frameD2.pack(fill=BOTH, expand=True)
+
         
         self.frame1 = Frame(frame)
         self.frame1.pack(fill=X)
@@ -48,23 +51,30 @@ class WinGCD:
             self.img=dirD+"/GCD_flute4_img"+b+".pdf"
         self.result=[]
         self.result.append(self.title)
-        self.result.append(dd[2]-dd[3][0])
-        self.result.append(np.sqrt(np.power(dd[4],2)+np.power(dd[5][0],2)))
+        self.result.append(dd[6])
+        self.result.append(dd[7])
         self.result.append("pA")
         
-        line1=np.poly1d(([0,dd[2]]))
-        x1 = np.linspace(float(self.sMin1.get()),float(self.sMax1.get()), 100)
-        line2=np.poly1d(([0,dd[3][0]]))
-        x2 = np.linspace(float(self.sMin2.get()),float(self.sMax2.get()), 100)
+        #line1=np.poly1d(([0,dd[2]]))
+        #x1_l = np.linspace(float(self.sMin1.get()),float(self.sMax1.get()), 100)
+        #line2=np.poly1d(([0,dd[3][0]]))
+        #x2_l = np.linspace(float(self.sMin2.get()),float(self.sMax2.get()), 100)
+        
+        line1=np.poly1d(dd[2])
+        #x1 = np.linspace(float(self.sMin1.get()),float(self.sMax1.get()), 100)
+        line2=np.poly1d(dd[3])
+        #x2 = np.linspace(float(self.sMin2.get()),float(self.sMax2.get()), 100)
+        x1_l = np.linspace(float(self.sMin1.get()),dd[6]*1.02, 100)
+        x2_l = np.linspace(dd[6]*0.9,float(self.sMax2.get()), 100)
         
         self.ax=self.fig.add_subplot(111)
-        self.ax.plot(dd[0],dd[1],".",x1,line1(x1),x2,line2(x2))
+        self.ax.plot(dd[0],dd[1],".",x1_l,line1(x1_l),x2_l,line2(x2_l))
         self.ax.ticklabel_format(axis='y',style='sci',scilimits=(-1,2),useOffset=True,useMathText=True)
         self.ax.set_title(self.title)
         self.ax.set_xlabel("Voltage [V]",loc='right')
         self.ax.set_ylabel("Current [pA]",loc='top')
-        self.ax.set_ylim(0,dd[2]*1.2)
-        self.ax.text(0.85,0.7, ("Results:\n%.3f$\pm$%.3f [pA]\n%.3f$\pm$%.3f [pA]\n%.3f$\pm$%.3f [pA]" % (dd[2],dd[4],dd[3][0],dd[5][0],dd[2]-dd[3][0],np.sqrt(np.power(dd[4],2)+np.power(dd[5][0],2)))), fontsize=10,horizontalalignment='center', style='normal', transform=self.ax.transAxes, bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 5})
+        self.ax.set_ylim(0,6.5)
+        self.ax.text(0.35,0.1, ("Result:\n%.2f$\pm$%.2f [V]" % (dd[6],dd[7])), fontsize=10,horizontalalignment='center', style='normal', transform=self.ax.transAxes, bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 5})
         
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.frame1)  # A tk.DrawingArea.
         self.canvas.draw()
@@ -109,26 +119,28 @@ class WinGCD:
         dd=gcd(self.fname,[float(self.sMin1.get()),float(self.sMax1.get()),float(self.sMin2.get()),float(self.sMax2.get())])
         self.result=[]
         self.result.append(self.title)
-        self.result.append(dd[2]-dd[3][0])
-        self.result.append(np.sqrt(np.power(dd[4],2)+np.power(dd[5][0],2)))
-        self.result.append("pA")
+        self.result.append(dd[6])
+        self.result.append(dd[7])
+        self.result.append("")
         line1=np.poly1d(dd[2])
-        x1 = np.linspace(float(self.sMin1.get()),float(self.sMax1.get()), 100)
+        #x1 = np.linspace(float(self.sMin1.get()),float(self.sMax1.get()), 100)
         line2=np.poly1d(dd[3])
-        x2 = np.linspace(float(self.sMin2.get()),float(self.sMax2.get()), 100)
-
+        #x2 = np.linspace(float(self.sMin2.get()),float(self.sMax2.get()), 100)
+        x1_l = np.linspace(float(self.sMin1.get()),dd[6]*1.02, 100)
+        x2_l = np.linspace(dd[6]*0.9,float(self.sMax2.get()), 100)
 
         self.ax.clear()
         
-        self.ax.plot(dd[0],dd[1],".",x1,line1(x1),x2,line2(x2))
+        self.ax.plot(dd[0],dd[1],".",x1_l,line1(x1_l),x2_l,line2(x2_l))
         self.ax.ticklabel_format(axis='y',style='sci',scilimits=(-1,2),useOffset=True,useMathText=True)
         self.ax.set_title(self.title)
         self.ax.set_xlabel("Voltage [V]",loc='right')
         self.ax.set_ylabel("Current [pA]",loc='top')
-        self.ax.set_ylim(0,6.5)
-        self.ax.text(0.35,0.1, ("Results:\n%.3f$\pm$%.3f [pA]\n%.3f$\pm$%.3f [pA]\n%.3f$\pm$%.3f [pA]" % (dd[2],dd[4],dd[3][0],dd[5][0],dd[2]-dd[3][0],np.sqrt(np.power(dd[4],2)+np.power(dd[5][0],2)))), fontsize=10,horizontalalignment='center', style='normal', transform=self.ax.transAxes, bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 5})
+        self.ax.text(0.2,0.5, ("Result:\n%.2f$\pm$%.2f [V]" % (dd[6],dd[7])), fontsize=10,horizontalalignment='center', style='normal', transform=self.ax.transAxes, bbox={'facecolor': 'red', 'alpha': 0.5, 'pad': 5})
         self.canvas.draw()
         self.toolbar.update()
+
+
 
 
 
@@ -160,21 +172,23 @@ def gcd(fname,limits):
     idmin2=int(np.where(xx==min2)[0])
     idmax2=int(np.where(xx==max2)[0])
 
-
-    val1=np.array(np.amax(yy[idmin1:idmax1]))
-    err1=np.array(1e-3)
-#    val1,cov1=np.polyfit(xx[idmin1:idmax1],yy[idmin1:idmax1],0,cov=True)
-#    err1=np.sqrt(np.diag(cov1))
-    val2,cov2=np.polyfit(xx[idmin2:idmax2],yy[idmin2:idmax2],0,cov=True)
+    
+    val1,cov1=np.polyfit(xx[idmin1:idmax1],yy[idmin1:idmax1],1,cov=True)
+    err1=np.sqrt(np.diag(cov1))
+    val2,cov2=np.polyfit(xx[idmin2:idmax2],yy[idmin2:idmax2],1,cov=True)
     err2=np.sqrt(np.diag(cov2))
     
-#    line1=np.poly1d(([0,val1[0]]))
-#    x1 = np.linspace(min1,max1, 100)
-#    line2=np.poly1d(([0,val2[0]]))
-#    x2 = np.linspace(min2,max2, 100)
+    #    line1=np.poly1d(([0,val1[0]]))
+    #    x1 = np.linspace(min1,max1, 100)
+    #    line2=np.poly1d(([0,val2[0]]))
+    #    x2 = np.linspace(min2,max2, 100)
+
+    res=(val2[1]-val1[1])/(val1[0]-val2[0])
+    e_res=np.sqrt(np.power(err2[1]/(val1[0]-val2[0]),2)+np.power(err1[1]/(val1[0]-val2[0]),2)+np.power(err1[0]*(val2[1]-val1[1])/np.power((val1[0]-val2[0]),2),2)+np.power(err2[0]*(val2[1]-val1[1])/np.power((val1[0]-val2[0]),2),2))
+
+    #    print(("Results: %.2f+-%.2f" % (res,e_res)))
     
-#    print(("Results : Val1=%.3f+-%.3f - Val2=%.3f+-%.3f - Diff=%.3f+-%.3f" % (val1[0],err1[0],val2[0],err2[0],val2[0]-val1[0],np.sqrt(np.power(err1,2)+np.power(err2,2))[0])))
+    #    print(("Results : Val1=%.2f+-%.2f - Val2=%.2f+-%.2f - Diff=%.2f+-%.2f" % (val1[0],err1[0],val2[0],err2[0],val2[0]-val1[0],np.sqrt(np.power(err1,2)+np.power(err2,2))[0])))
 
-    return xx,yy,val1,val2,err1,err2
-
+    return xx,yy,val1,val2,err1,err2,res,e_res 
       
