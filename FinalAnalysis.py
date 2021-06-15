@@ -103,11 +103,11 @@ mformat = workbook.add_format({'bold': True})
 worksheet.set_column('A:A', 25)
 worksheet.set_column('B:B', 17)
 worksheet.set_column('C:C', 21)
-worksheet.set_column('D:D', 14)
-worksheet.set_column('E:E', 21)
-worksheet.set_column('F:G', 17)
-fieldnames20 = ['Flute2', 'n+ linewidth (μm)', 'Polysilicon meander (Ω)', 'GCD s0 (cm/s)', 'p-stop linewidth (μm)', 'Dielectric Break (V)']
-fieldnames21 = [' ', 'L', 'L', 'L', 'L', 'L']
+worksheet.set_column('D:E', 14)
+worksheet.set_column('F:F', 21)
+worksheet.set_column('G:H', 17)
+fieldnames20 = ['Flute2', 'n+ linewidth (μm)', 'Polysilicon meander (Ω)', 'GCD s0 (cm/s)', 'GCD V_FB (V)', 'p-stop linewidth (μm)', 'Dielectric Break (V)']
+fieldnames21 = [' ', 'L', 'L', 'L', 'L', 'L', 'L']
 for i20,data20 in enumerate(fieldnames20):
     worksheet.write(0,i20,data20,tformat)
 for i21,data21 in enumerate(fieldnames21):
@@ -120,13 +120,13 @@ a2Data = []
 for jname,dataname in enumerate(fname):
     xl_workbook = xlrd.open_workbook(dataname)
     sheet = xl_workbook.sheet_by_index(0)
-    a2 = [128.5*(sheet.cell_value(rowx=3, colx=1))/(sheet.cell_value(rowx=7, colx=1)), sheet.cell_value(rowx=8, colx=1), (sheet.cell_value(rowx=9, colx=1))*0.000000000001/1.6E-019/5415000000/0.00505, 128.5*(sheet.cell_value(rowx=4, colx=1))/(sheet.cell_value(rowx=10, colx=1))]
+    a2 = [128.5*(sheet.cell_value(rowx=3, colx=1))/(sheet.cell_value(rowx=7, colx=1)), sheet.cell_value(rowx=8, colx=1), (sheet.cell_value(rowx=9, colx=1))*0.000000000001/1.6E-019/5415000000/0.00505, 5.00 + sheet.cell_value(rowx=10, colx=1), 128.5*(sheet.cell_value(rowx=4, colx=1))/(sheet.cell_value(rowx=10, colx=1))]
     adiel2 = sheet.cell_value(rowx=11, colx=1)
-    a2mod = [128.5*(sheet.cell_value(rowx=3, colx=1))/(sheet.cell_value(rowx=7, colx=1)), sheet.cell_value(rowx=8, colx=1), (sheet.cell_value(rowx=9, colx=1))*0.000000000001/1.6E-019/5415000000/0.00505, 128.5*(sheet.cell_value(rowx=4, colx=1))/(sheet.cell_value(rowx=10, colx=1)), sheet.cell_value(rowx=11, colx=1)]
+    a2mod = [128.5*(sheet.cell_value(rowx=3, colx=1))/(sheet.cell_value(rowx=7, colx=1)), sheet.cell_value(rowx=8, colx=1), (sheet.cell_value(rowx=9, colx=1))*0.000000000001/1.6E-019/5415000000/0.00505, 5.00 + sheet.cell_value(rowx=10, colx=1), 128.5*(sheet.cell_value(rowx=4, colx=1))/(sheet.cell_value(rowx=10, colx=1)), sheet.cell_value(rowx=11, colx=1)]
     a2Data.append(a2mod)
     for col_num2, col_data2 in enumerate(a2):
         worksheet.write(row_num2+2, col_num2+1, col_data2, sci_format)
-    worksheet.write(row_num2+2, 5, adiel2)
+    worksheet.write(row_num2+2, 6, adiel2)
     row_num2 = row_num2 + 1
 for i in range(4):
     aDataCol = [item[i] for item in a2Data]
@@ -134,11 +134,11 @@ for i in range(4):
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
     stdMSD = statistics.stdev(aDataCol)
     worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
-aDataCol = [item[4] for item in a2Data]
+aDataCol = [item[5] for item in a2Data]
 medMSD = statistics.median(aDataCol)
-worksheet.write(nbHM+2, 5, medMSD)
+worksheet.write(nbHM+2, 6, medMSD)
 stdMSD = statistics.stdev(aDataCol)
-worksheet.write(nbHM+3, 5, stdMSD)
+worksheet.write(nbHM+3, 6, stdMSD)
 
 
 worksheet = workbook.add_worksheet('Flute3')
@@ -161,17 +161,17 @@ a3Data = []
 for jname,dataname in enumerate(fname):
     xl_workbook = xlrd.open_workbook(dataname)
     sheet = xl_workbook.sheet_by_index(0)
-    abulk3 = sheet.cell_value(rowx=12, colx=1)
-    aiv3 = sheet.cell_value(rowx=13, colx=1)
-    acv3 = sheet.cell_value(rowx=14, colx=1)
+    abulk3 = sheet.cell_value(rowx=13, colx=1)
+    aiv3 = sheet.cell_value(rowx=14, colx=1)
+    acv3 = sheet.cell_value(rowx=15, colx=1)
     acvRound3 = round(acv3, 0)
-    ametal3 = sheet.cell_value(rowx=15, colx=1)
-    checkp = (sheet.cell_value(rowx=17, colx=1))
+    ametal3 = sheet.cell_value(rowx=16, colx=1)
+    checkp = (sheet.cell_value(rowx=18, colx=1))
     if checkp == 0:
         checkn = 1
     else:
         checkn = checkp
-    a3 = [sheet.cell_value(rowx=16, colx=1), 128.5*(sheet.cell_value(rowx=16, colx=1))/checkn, sheet.cell_value(rowx=18, colx=1)]
+    a3 = [sheet.cell_value(rowx=17, colx=1), 128.5*(sheet.cell_value(rowx=17, colx=1))/checkn, sheet.cell_value(rowx=19, colx=1)]
     ares3 = 0
     if acvRound3 == 240:
         ares3 = 3502
@@ -230,7 +230,7 @@ for jname,dataname in enumerate(fname):
     else:
         ares3 = -1000
 
-    a3mod = [sheet.cell_value(rowx=12, colx=1), sheet.cell_value(rowx=13, colx=1), acv3, ametal3, sheet.cell_value(rowx=16, colx=1), 128.5*(sheet.cell_value(rowx=16, colx=1))/checkn, sheet.cell_value(rowx=18, colx=1), ares3]
+    a3mod = [sheet.cell_value(rowx=13, colx=1), sheet.cell_value(rowx=14, colx=1), acv3, ametal3, sheet.cell_value(rowx=17, colx=1), 128.5*(sheet.cell_value(rowx=17, colx=1))/checkn, sheet.cell_value(rowx=19, colx=1), ares3]
     a3Data.append(a3mod)
     worksheet.write(row_num3+2, 1, abulk3, sci_format)
     worksheet.write(row_num3+2, 2, aiv3)
@@ -267,15 +267,16 @@ for i in range(4, 8):
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
     stdMSD = statistics.stdev(aDataCol)
     worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
-
+    
+    
 worksheet = workbook.add_worksheet('Flute4')
 tformat = workbook.add_format({'bold': True})
 tformat.set_align('center')
 mformat = workbook.add_format({'bold': True})
 worksheet.set_column('A:A', 25) 
-worksheet.set_column('B:G', 14)
-fieldnames40 = ['Flute4', 'CBKR n+ (Ω)', 'GCD s0 (cm/s)','CBKR poly (Ω)','CC poly (Ω)','CC p+ (Ω)','CC n+ (Ω)']
-fieldnames41 = [' ', 'L', 'L', 'L', 'L', 'L', 'L']
+worksheet.set_column('B:H', 14)
+fieldnames40 = ['Flute4', 'CBKR n+ (Ω)', 'GCD s0 (cm/s)', 'GCD V_FB (V)', 'CBKR poly (Ω)', 'CC poly (Ω)', 'CC p+ (Ω)', 'CC n+ (Ω)']
+fieldnames41 = [' ', 'L', 'L', 'L', 'L', 'L', 'L', 'L']
 for i40,data40 in enumerate(fieldnames40):
     worksheet.write(0,i40,data40,tformat)
 for i41,data41 in enumerate(fieldnames41):
@@ -288,10 +289,10 @@ a4Data = []
 for jname,dataname in enumerate(fname):
     xl_workbook = xlrd.open_workbook(dataname)
     sheet = xl_workbook.sheet_by_index(0)
-    ancbkr4 = sheet.cell_value(rowx=19, colx=1)
-    agcd4 = (sheet.cell_value(rowx=20, colx=1))*0.000000000001/1.6E-019/5415000000/0.00723
-    a4 = [sheet.cell_value(rowx=21, colx=1), sheet.cell_value(rowx=22, colx=1), sheet.cell_value(rowx=23, colx=1), sheet.cell_value(rowx=24, colx=1)]
-    a4mod = [sheet.cell_value(rowx=19, colx=1), (sheet.cell_value(rowx=20, colx=1))*0.000000000001/1.6E-019/5415000000/0.00723, sheet.cell_value(rowx=21, colx=1), sheet.cell_value(rowx=22, colx=1), sheet.cell_value(rowx=23, colx=1), sheet.cell_value(rowx=24, colx=1)]
+    ancbkr4 = sheet.cell_value(rowx=20, colx=1)
+    agcd4 = (sheet.cell_value(rowx=21, colx=1))*0.000000000001/1.6E-019/5415000000/0.00723
+    a4 = [5.00 + sheet.cell_value(rowx=22, colx=1), sheet.cell_value(rowx=23, colx=1), sheet.cell_value(rowx=24, colx=1), sheet.cell_value(rowx=25, colx=1), sheet.cell_value(rowx=26, colx=1)]
+    a4mod = [sheet.cell_value(rowx=20, colx=1), (sheet.cell_value(rowx=21, colx=1))*0.000000000001/1.6E-019/5415000000/0.00723, 5.00 + sheet.cell_value(rowx=22, colx=1), sheet.cell_value(rowx=23, colx=1), sheet.cell_value(rowx=24, colx=1), sheet.cell_value(rowx=25, colx=1), sheet.cell_value(rowx=26, colx=1)]
     a4Data.append(a4mod)
     worksheet.write(row_num4+2, 1, ancbkr4, sci_format)
     worksheet.write(row_num4+2, 2, agcd4, sci_format)
@@ -299,13 +300,12 @@ for jname,dataname in enumerate(fname):
         worksheet.write(row_num4+2, col_num4+3, col_data4, sci_format)
     row_num4 = row_num4 + 1
 nbHM = row_num4
-for i in range(6):
+for i in range(7):
     aDataCol = [item[i] for item in a4Data]
     medMSD = statistics.median(aDataCol)
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
     stdMSD = statistics.stdev(aDataCol)
     worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
-
 
 worksheet = workbook.add_worksheet('Acceptance')
 
