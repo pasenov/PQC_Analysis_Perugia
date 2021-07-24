@@ -15,6 +15,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from mosfunc import WinMos
 from fetfunc import WinFET
+from gcdIVfunc import WinGCDIV
 from gcdfunc import WinGCD
 from resfunc import WinRes
 from capacitorfunc import WinCap
@@ -179,6 +180,8 @@ class mainWindow(object):
                             Res.append(new_window(WinDielBreak,mName[fl][i],fname,1,saveFig.get()))
                         elif mType[fl][i]=="F":
                             Res.append(new_window(WinFET,mName[fl][i],fname,1,saveFig.get()))
+                        elif mType[fl][i]=="GIV":
+                            Res.append(new_window(WinGCDIV,mName[fl][i],fname,1,saveFig.get()))
                         elif mType[fl][i]=="G":
                             Res.append(new_window(WinGCD,mName[fl][i],fname,1,saveFig.get()))
                         elif mType[fl][i]=="IV":
@@ -212,20 +215,20 @@ class mainWindow(object):
                         for col_num, col_data in enumerate(row_data):
                             worksheet.write(row_num+1, col_num, col_data)
                 #FORMULAS
-                worksheet.write_formula('E20', '=(4*B4*13*13/3/33/33)*(1+13/2/(33-13))')
-                worksheet.write_formula('E22', '=(4*B3*13*13/3/33/33)*(1+13/2/(33-13))')
-                worksheet.write_formula('F20', '=(4*C4*13*13/3/33/33)*(1+13/2/(33-13))')
-                worksheet.write_formula('F22', '=(4*C5*13*13/3/33/33)*(1+13/2/(33-13))')
-                worksheet.write_formula('G20','=B20-E20')
-                worksheet.write_formula('H20','=SQRT(C20*C20+F20*F20)')
-                worksheet.write_formula('G22','=B22-E22')
-                worksheet.write_formula('H22','=SQRT(C22*C22+E22*E122)')
-                worksheet.write_formula('G18','=128.5*B17/B18')
-                worksheet.write_formula('H18','=G18*SQRT(C17*C17/(B17*B17)+C18*C18/(B18*B18))')
+                worksheet.write_formula('E21', '=(4*B4*13*13/3/33/33)*(1+13/2/(33-13))')
+                worksheet.write_formula('E24', '=(4*B3*13*13/3/33/33)*(1+13/2/(33-13))')
+                worksheet.write_formula('F21', '=(4*C4*13*13/3/33/33)*(1+13/2/(33-13))')
+                worksheet.write_formula('F24', '=(4*C5*13*13/3/33/33)*(1+13/2/(33-13))')
+                worksheet.write_formula('G21','=B21-E21')
+                worksheet.write_formula('H21','=SQRT(C21*C21+F21*F21)')
+                worksheet.write_formula('G24','=B24-E24')
+                worksheet.write_formula('H24','=SQRT(C24*C24+E24*E24)')
+                worksheet.write_formula('G19','=128.5*B18/B19')
+                worksheet.write_formula('H19','=G19*SQRT(C18*C18/(B18*B18)+C19*C19/(B19*B19))')
                 worksheet.write_formula('G8','=128.5*B4/B8')
                 worksheet.write_formula('H8','=G8*SQRT(C4*C4/(B4*B4)+C8*C8/(B8*B8))')
-                worksheet.write_formula('G11','=128.5*B5/B11')
-                worksheet.write_formula('H11','=G11*SQRT(C5*C5/(B5*B5)+C11*C11/(B11*B11))')
+                worksheet.write_formula('G12','=128.5*B5/B12')
+                worksheet.write_formula('H12','=G12*SQRT(C5*C5/(B5*B5)+C12*C12/(B12*B12))')
                 worksheet.write_formula('G10','=B10*0.000000000001/1.6E-19/5415000000/0.00505')
                 worksheet.write_formula('H10','=C10*0.000000000001/1.6E-19/5415000000/0.00505')
                 worksheet.write_formula('G21','=B21*0.000000000001/1.6E-19/5415000000/0.00723')
@@ -259,9 +262,9 @@ if __name__ == "__main__":
     flute=["flute1","flute2","flute3","flute4"]
     
     nM={"flute1": 6,
-        "flute2": 5,
+        "flute2": 6,
         "flute3": 7,
-        "flute4": 6}
+        "flute4": 7}
     
     mName={"flute1":
            ["Capacitor Measurement",
@@ -273,7 +276,8 @@ if __name__ == "__main__":
            "flute2":
            ["n+Linewidth Resistance",
             "Polysilicon Meander Resistance",
-            "Gated Diode Flute2",
+            "Gated Diode Flute2 IV",
+            "Gated Diode Flute2 V_FB",
             "pstopLinewidth Resistance",
             "Dielectric Breakdown"],
            "flute3":
@@ -286,27 +290,28 @@ if __name__ == "__main__":
             "MetalMeanderChain Resistance"],
            "flute4":
            ["n+CBKR Resistance",
-            "Gated Diode Flute4",
+            "Gated Diode Flute4 IV",
+            "Gated Diode Flute4 V_FB",
             "polyCBKR Resistance",
             "PolyChain Resistance",
             "p+Chain Resistance",
             "n+Chain Resistance"]}
 
     mTag={"flute1": [["Capacitor"],["Poly"],["n+"],["pstop"],["FET"],["MOS"]],
-           "flute2": [["n+_linewidth"],["PolyMeander"],["GCD"],["pstopLinewidth"],["DielectricBreak"]],
+           "flute2": [["n+_linewidth"],["PolyMeander"],["GCD"],["GCD"],["pstopLinewidth"],["DielectricBreak"]],
            "flute3": [["BulckCross"],["DiodeIV","Diode_IV"],["DiodeCV","Diode_CV"],["MetalCover"],["p+Cross"],["p+Bridge"],["Metal_Meander_Chain"]],
-           "flute4": [["n+CBKR"],["GCD"],["polyCBKR"],["Poly_Chain"],["p+_Chain"],["n+_Chain"]]}
+           "flute4": [["n+CBKR"],["GCD"],["GCD"],["polyCBKR"],["Poly_Chain"],["p+_Chain"],["n+_Chain"]]}
 
 
     
     mType={"flute1":
            ["C",4.53,4.53,4.53,"F","M"],
            "flute2":
-           [1,1,"G",1,"D"],
+           [1,1,"GIV","G",1,"D"],
            "flute3":
            [10.726*0.0187*1.089,"IV","CV",4.53,4.53,1,1],
            "flute4":
-           [1,"G",1,1,1,1]}
+           [1,"GIV","G",1,1,1,1]}
 
     
     ckVar={"flute1": [],
