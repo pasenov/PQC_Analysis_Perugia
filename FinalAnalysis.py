@@ -147,7 +147,7 @@ tformat.set_align('center')
 mformat = workbook.add_format({'bold': True})
 worksheet.set_column('A:A', 25) 
 worksheet.set_column('B:I', 18)
-fieldnames30 = ['Flute3', 'Bulk VdP (Ω.cm)', 'Diode IV (A)','Diode CV Vd (V)','VdP metal (Ω/sq)','VdP edge (Ω/sq)','Linewidth edge (μm)','Metal Meander (Ω)', 'Bulk flute3 (Ω/sq)']
+fieldnames30 = ['Flute3', 'Bulk VdP (Ω.cm)', 'Diode IV (A)','Diode CV Vd (V)','VdP metal (Ω/sq)','VdP edge (Ω/sq)','Linewidth edge (μm)','Metal Meander (Ω)', 'Bulk flute3 (Ω.cm)']
 fieldnames31 = [' ', 'L', 'L', 'L', 'L', 'L', 'L', 'L', 'L']
 for i30,data30 in enumerate(fieldnames30):
     worksheet.write(0,i30,data30,tformat)
