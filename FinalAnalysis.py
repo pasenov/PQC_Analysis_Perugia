@@ -173,7 +173,287 @@ for jname,dataname in enumerate(fname):
         checkn = checkp
     a3 = [sheet.cell_value(rowx=17, colx=1), 128.5*(sheet.cell_value(rowx=17, colx=1))/checkn, sheet.cell_value(rowx=19, colx=1)]
     ares3 = 0
-    if acvRound3 == 240:
+    if acvRound3 == 100:
+        ares3 = 8405
+    elif acvRound3 == 101:
+        ares3 = 8322
+    elif acvRound3 == 102:
+        ares3 = 8240
+    elif acvRound3 == 103:
+        ares3 = 8160
+    elif acvRound3 == 104:
+        ares3 = 8082
+    elif acvRound3 == 105:
+        ares3 = 8005
+    elif acvRound3 == 106:
+        ares3 = 7929
+    elif acvRound3 == 107:
+        ares3 = 7855
+    elif acvRound3 == 108:
+        ares3 = 7782
+    elif acvRound3 == 109:
+        ares3 = 7711
+    elif acvRound3 == 110:
+        ares3 = 7641
+    elif acvRound3 == 111:
+        ares3 = 7572
+    elif acvRound3 == 112:
+        ares3 = 7504
+    elif acvRound3 == 113:
+        ares3 = 7438
+    elif acvRound3 == 114:
+        ares3 = 7373
+    elif acvRound3 == 115:
+        ares3 = 7309
+    elif acvRound3 == 116:
+        ares3 = 7246
+    elif acvRound3 == 117:
+        ares3 = 7184
+    elif acvRound3 == 118:
+        ares3 = 7123
+    elif acvRound3 == 119:
+        ares3 = 7063
+    elif acvRound3 == 120:
+        ares3 = 7004
+    elif acvRound3 == 121:
+        ares3 = 6946
+    elif acvRound3 == 122:
+        ares3 = 6889
+    elif acvRound3 == 123:
+        ares3 = 6833
+    elif acvRound3 == 124:
+        ares3 = 6778
+    elif acvRound3 == 125:
+        ares3 = 6724
+    elif acvRound3 == 126:
+        ares3 = 6670
+    elif acvRound3 == 127:
+        ares3 = 6618
+    elif acvRound3 == 128:
+        ares3 = 6566
+    elif acvRound3 == 129:
+        ares3 = 6515
+    elif acvRound3 == 130:
+        ares3 = 6465
+    elif acvRound3 == 131:
+        ares3 = 6416
+    elif acvRound3 == 132:
+        ares3 = 6367
+    elif acvRound3 == 133:
+        ares3 = 6319
+    elif acvRound3 == 134:
+        ares3 = 6272
+    elif acvRound3 == 135:
+        ares3 = 6226
+    elif acvRound3 == 136:
+        ares3 = 6180
+    elif acvRound3 == 137:
+        ares3 = 6135
+    elif acvRound3 == 138:
+        ares3 = 6090
+    elif acvRound3 == 139:
+        ares3 = 6047
+    elif acvRound3 == 140:
+        ares3 = 6003
+    elif acvRound3 == 141:
+        ares3 = 5961
+    elif acvRound3 == 142:
+        ares3 = 5919
+    elif acvRound3 == 143:
+        ares3 = 5878
+    elif acvRound3 == 144:
+        ares3 = 5837
+    elif acvRound3 == 145:
+        ares3 = 5796
+    elif acvRound3 == 146:
+        ares3 = 5757
+    elif acvRound3 == 147:
+        ares3 = 5718
+    elif acvRound3 == 148:
+        ares3 = 5679
+    elif acvRound3 == 149:
+        ares3 = 5641
+    elif acvRound3 == 150:
+        ares3 = 5603
+    elif acvRound3 == 151:
+        ares3 = 5566
+    elif acvRound3 == 152:
+        ares3 = 5529
+    elif acvRound3 == 153:
+        ares3 = 5493
+    elif acvRound3 == 154:
+        ares3 = 5458
+    elif acvRound3 == 155:
+        ares3 = 5422
+    elif acvRound3 == 156:
+        ares3 = 5388
+    elif acvRound3 == 157:
+        ares3 = 5353
+    elif acvRound3 == 158:
+        ares3 = 5320
+    elif acvRound3 == 159:
+        ares3 = 5286
+    elif acvRound3 == 160:
+        ares3 = 5253
+    elif acvRound3 == 161:
+        ares3 = 5220
+    elif acvRound3 == 162:
+        ares3 = 5188
+    elif acvRound3 == 163:
+        ares3 = 5157
+    elif acvRound3 == 164:
+        ares3 = 5125
+    elif acvRound3 == 165:
+        ares3 = 5094
+    elif acvRound3 == 166:
+        ares3 = 5063
+    elif acvRound3 == 167:
+        ares3 = 5033
+    elif acvRound3 == 168:
+        ares3 = 5003
+    elif acvRound3 == 169:
+        ares3 = 4973
+    elif acvRound3 == 170:
+        ares3 = 4933
+    elif acvRound3 == 171:
+        ares3 = 4915
+    elif acvRound3 == 172:
+        ares3 = 4887
+    elif acvRound3 == 173:
+        ares3 = 4858
+    elif acvRound3 == 174:
+        ares3 = 4830
+    elif acvRound3 == 175:
+        ares3 = 4803
+    elif acvRound3 == 176:
+        ares3 = 4775
+    elif acvRound3 == 177:
+        ares3 = 4749
+    elif acvRound3 == 178:
+        ares3 = 4722
+    elif acvRound3 == 179:
+        ares3 = 4695
+    elif acvRound3 == 180:
+        ares3 = 4669
+    elif acvRound3 == 181:
+        ares3 = 4644
+    elif acvRound3 == 182:
+        ares3 = 4618
+    elif acvRound3 == 183:
+        ares3 = 4593
+    elif acvRound3 == 184:
+        ares3 = 4568
+    elif acvRound3 == 185:
+        ares3 = 4543
+    elif acvRound3 == 186:
+        ares3 = 4519
+    elif acvRound3 == 187:
+        ares3 = 4495
+    elif acvRound3 == 188:
+        ares3 = 4471
+    elif acvRound3 == 189:
+        ares3 = 4447
+    elif acvRound3 == 190:
+        ares3 = 4424
+    elif acvRound3 == 191:
+        ares3 = 4400
+    elif acvRound3 == 192:
+        ares3 = 4378
+    elif acvRound3 == 193:
+        ares3 = 4355
+    elif acvRound3 == 194:
+        ares3 = 4332
+    elif acvRound3 == 195:
+        ares3 = 4310
+    elif acvRound3 == 196:
+        ares3 = 4288
+    elif acvRound3 == 197:
+        ares3 = 4266
+    elif acvRound3 == 198:
+        ares3 = 4245
+    elif acvRound3 == 199:
+        ares3 = 4224 
+    elif acvRound3 == 200:
+        ares3 = 4202
+    elif acvRound3 == 201:
+        ares3 = 4182
+    elif acvRound3 == 202:
+        ares3 = 4161
+    elif acvRound3 == 203:
+        ares3 = 4140
+    elif acvRound3 == 204:
+        ares3 = 4120
+    elif acvRound3 == 205:
+        ares3 = 4100
+    elif acvRound3 == 206:
+        ares3 = 4080
+    elif acvRound3 == 207:
+        ares3 = 4060
+    elif acvRound3 == 208:
+        ares3 = 4041
+    elif acvRound3 == 209:
+        ares3 = 4021
+    elif acvRound3 == 210:
+        ares3 = 4002
+    elif acvRound3 == 211:
+        ares3 = 3983
+    elif acvRound3 == 212:
+        ares3 = 3965
+    elif acvRound3 == 213:
+        ares3 = 3946
+    elif acvRound3 == 214:
+        ares3 = 3928
+    elif acvRound3 == 215:
+        ares3 = 3909
+    elif acvRound3 == 216:
+        ares3 = 3891
+    elif acvRound3 == 217:
+        ares3 = 3873
+    elif acvRound3 == 218:
+        ares3 = 3855
+    elif acvRound3 == 219:
+        ares3 = 3838
+    elif acvRound3 == 220:
+        ares3 = 3820
+    elif acvRound3 == 221:
+        ares3 = 3803
+    elif acvRound3 == 222:
+        ares3 = 3786
+    elif acvRound3 == 223:
+        ares3 = 3769
+    elif acvRound3 == 224:
+        ares3 = 3752
+    elif acvRound3 == 225:
+        ares3 = 3735
+    elif acvRound3 == 226:
+        ares3 = 3719
+    elif acvRound3 == 227:
+        ares3 = 3703
+    elif acvRound3 == 228:
+        ares3 = 3686
+    elif acvRound3 == 229:
+        ares3 = 3670
+    elif acvRound3 == 230:
+        ares3 = 3654
+    elif acvRound3 == 231:
+        ares3 = 3638
+    elif acvRound3 == 232:
+        ares3 = 3623
+    elif acvRound3 == 233:
+        ares3 = 3607
+    elif acvRound3 == 234:
+        ares3 = 3592
+    elif acvRound3 == 235:
+        ares3 = 3577
+    elif acvRound3 == 236:
+        ares3 = 3561
+    elif acvRound3 == 237:
+        ares3 = 3546
+    elif acvRound3 == 238:
+        ares3 = 3531
+    elif acvRound3 == 239:
+        ares3 = 3517
+    elif acvRound3 == 240:
         ares3 = 3502
     elif acvRound3 == 241:
         ares3 = 3488
@@ -227,6 +507,274 @@ for jname,dataname in enumerate(fname):
         ares3 = 3172
     elif acvRound3 == 266:
         ares3 = 3160
+    elif acvRound3 == 267:
+        ares3 = 3148
+    elif acvRound3 == 268:
+        ares3 = 3136
+    elif acvRound3 == 269:
+        ares3 = 3124
+    elif acvRound3 == 270:
+        ares3 = 3113
+    elif acvRound3 == 271:
+        ares3 = 3101
+    elif acvRound3 == 272:
+        ares3 = 3090
+    elif acvRound3 == 273:
+        ares3 = 3079
+    elif acvRound3 == 274:
+        ares3 = 3067
+    elif acvRound3 == 275:
+        ares3 = 3056
+    elif acvRound3 == 276:
+        ares3 = 3045
+    elif acvRound3 == 277:
+        ares3 = 3034
+    elif acvRound3 == 278:
+        ares3 = 3023
+    elif acvRound3 == 279:
+        ares3 = 3013
+    elif acvRound3 == 280:
+        ares3 = 3002
+    elif acvRound3 == 281:
+        ares3 = 2991
+    elif acvRound3 == 282:
+        ares3 = 2980
+    elif acvRound3 == 283:
+        ares3 = 2970
+    elif acvRound3 == 284:
+        ares3 = 2959
+    elif acvRound3 == 285:
+        ares3 = 2949
+    elif acvRound3 == 286:
+        ares3 = 2939
+    elif acvRound3 == 287:
+        ares3 = 2929
+    elif acvRound3 == 288:
+        ares3 = 2918
+    elif acvRound3 == 289:
+        ares3 = 2908
+    elif acvRound3 == 290:
+        ares3 = 2898
+    elif acvRound3 == 291:
+        ares3 = 2888
+    elif acvRound3 == 292:
+        ares3 = 2878
+    elif acvRound3 == 293:
+        ares3 = 2869
+    elif acvRound3 == 294:
+        ares3 = 2859
+    elif acvRound3 == 295:
+        ares3 = 2849
+    elif acvRound3 == 296:
+        ares3 = 2839
+    elif acvRound3 == 297:
+        ares3 = 2830
+    elif acvRound3 == 298:
+        ares3 = 2820
+    elif acvRound3 == 299:
+        ares3 = 2811
+    elif acvRound3 == 300:
+        ares3 = 2802
+    elif acvRound3 == 301:
+        ares3 = 2792
+    elif acvRound3 == 302:
+        ares3 = 2783
+    elif acvRound3 == 303:
+        ares3 = 2773
+    elif acvRound3 == 304:
+        ares3 = 2765
+    elif acvRound3 == 305:
+        ares3 = 2756
+    elif acvRound3 == 306:
+        ares3 = 2747
+    elif acvRound3 == 307:
+        ares3 = 2738
+    elif acvRound3 == 308:
+        ares3 = 2729
+    elif acvRound3 == 309:
+        ares3 = 2720
+    elif acvRound3 == 310:
+        ares3 = 2711
+    elif acvRound3 == 311:
+        ares3 = 2703
+    elif acvRound3 == 312:
+        ares3 = 2694
+    elif acvRound3 == 313:
+        ares3 = 2685
+    elif acvRound3 == 314:
+        ares3 = 2677
+    elif acvRound3 == 315:
+        ares3 = 2668
+    elif acvRound3 == 316:
+        ares3 = 2660
+    elif acvRound3 == 317:
+        ares3 = 2651
+    elif acvRound3 == 318:
+        ares3 = 2643
+    elif acvRound3 == 319:
+        ares3 = 2635
+    elif acvRound3 == 320:
+        ares3 = 2627
+    elif acvRound3 == 321:
+        ares3 = 2618
+    elif acvRound3 == 322:
+        ares3 = 2610
+    elif acvRound3 == 323:
+        ares3 = 2602
+    elif acvRound3 == 324:
+        ares3 = 2594
+    elif acvRound3 == 325:
+        ares3 = 2586
+    elif acvRound3 == 326:
+        ares3 = 2578
+    elif acvRound3 == 327:
+        ares3 = 2570
+    elif acvRound3 == 328:
+        ares3 = 2562
+    elif acvRound3 == 329:
+        ares3 = 2555
+    elif acvRound3 == 330:
+        ares3 = 2547
+    elif acvRound3 == 331:
+        ares3 = 2539
+    elif acvRound3 == 332:
+        ares3 = 2532
+    elif acvRound3 == 333:
+        ares3 = 2524
+    elif acvRound3 == 334:
+        ares3 = 2516
+    elif acvRound3 == 335:
+        ares3 = 2509
+    elif acvRound3 == 336:
+        ares3 = 2501
+    elif acvRound3 == 337:
+        ares3 = 2494
+    elif acvRound3 == 338:
+        ares3 = 2487
+    elif acvRound3 == 339:
+        ares3 = 2479
+    elif acvRound3 == 340:
+        ares3 = 2472
+    elif acvRound3 == 341:
+        ares3 = 2465
+    elif acvRound3 == 342:
+        ares3 = 2458
+    elif acvRound3 == 343:
+        ares3 = 2450
+    elif acvRound3 == 344:
+        ares3 = 2443
+    elif acvRound3 == 345:
+        ares3 = 2436
+    elif acvRound3 == 346:
+        ares3 = 2429
+    elif acvRound3 == 347:
+        ares3 = 2422
+    elif acvRound3 == 348:
+        ares3 = 2415
+    elif acvRound3 == 349:
+        ares3 = 2408
+    elif acvRound3 == 350:
+        ares3 = 2401
+    elif acvRound3 == 351:
+        ares3 = 2395
+    elif acvRound3 == 352:
+        ares3 = 2388
+    elif acvRound3 == 353:
+        ares3 = 2381
+    elif acvRound3 == 354:
+        ares3 = 2374
+    elif acvRound3 == 355:
+        ares3 = 2368
+    elif acvRound3 == 356:
+        ares3 = 2361
+    elif acvRound3 == 357:
+        ares3 = 2354
+    elif acvRound3 == 358:
+        ares3 = 2348
+    elif acvRound3 == 359:
+        ares3 = 2341
+    elif acvRound3 == 360:
+        ares3 = 2335
+    elif acvRound3 == 361:
+        ares3 = 2328
+    elif acvRound3 == 362:
+        ares3 = 2322
+    elif acvRound3 == 363:
+        ares3 = 2315
+    elif acvRound3 == 364:
+        ares3 = 2309
+    elif acvRound3 == 365:
+        ares3 = 2303
+    elif acvRound3 == 366:
+        ares3 = 2296
+    elif acvRound3 == 367:
+        ares3 = 2290
+    elif acvRound3 == 368:
+        ares3 = 2284
+    elif acvRound3 == 369:
+        ares3 = 2278
+    elif acvRound3 == 370:
+        ares3 = 2272
+    elif acvRound3 == 371:
+        ares3 = 2265
+    elif acvRound3 == 372:
+        ares3 = 2259
+    elif acvRound3 == 373:
+        ares3 = 2253
+    elif acvRound3 == 374:
+        ares3 = 2247
+    elif acvRound3 == 375:
+        ares3 = 2241
+    elif acvRound3 == 376:
+        ares3 = 2235
+    elif acvRound3 == 377:
+        ares3 = 2229
+    elif acvRound3 == 378:
+        ares3 = 2224
+    elif acvRound3 == 379:
+        ares3 = 2218
+    elif acvRound3 == 380:
+        ares3 = 2212
+    elif acvRound3 == 381:
+        ares3 = 2206
+    elif acvRound3 == 382:
+        ares3 = 2200
+    elif acvRound3 == 383:
+        ares3 = 2195
+    elif acvRound3 == 384:
+        ares3 = 2189
+    elif acvRound3 == 385:
+        ares3 = 2183
+    elif acvRound3 == 386:
+        ares3 = 2177
+    elif acvRound3 == 387:
+        ares3 = 2172
+    elif acvRound3 == 388:
+        ares3 = 2166
+    elif acvRound3 == 389:
+        ares3 = 2161
+    elif acvRound3 == 390:
+        ares3 = 2155
+    elif acvRound3 == 391:
+        ares3 = 2150
+    elif acvRound3 == 392:
+        ares3 = 2144
+    elif acvRound3 == 393:
+        ares3 = 2139
+    elif acvRound3 == 394:
+        ares3 = 2133
+    elif acvRound3 == 395:
+        ares3 = 2128
+    elif acvRound3 == 396:
+        ares3 = 2122
+    elif acvRound3 == 397:
+        ares3 = 2117
+    elif acvRound3 == 398:
+        ares3 = 2112
+    elif acvRound3 == 399:
+        ares3 = 2107
+    elif acvRound3 == 400:
+        ares3 = 2101
     else:
         ares3 = -1000
 
