@@ -850,9 +850,9 @@ for jname,dataname in enumerate(fname):
 nbHM = row_num4
 for i in range(7):
     aDataCol = [item[i] for item in a4Data]
-    medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+    medMSD = statistics.median(x for x in aDataCol if x != 0.0 and x != 5.0)
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
-    stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+    stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0 and x != 5.0)
     worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
 
 worksheet = workbook.add_worksheet('Acceptance')
