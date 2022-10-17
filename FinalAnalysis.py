@@ -67,9 +67,9 @@ tformat = workbook.add_format({'bold': True})
 tformat.set_align('center')
 mformat = workbook.add_format({'bold': True})
 worksheet.set_column('A:A', 25) 
-worksheet.set_column('B:G', 14)
-fieldnames10 = ['Flute1', 'Capacitor (pF)', 'VdP Poly (Ω/sq)', 'VdP strip (Ω/sq)', 'VdP stop (Ω/sq)', 'FET V_TH (V)', 'MOS V_fb (V)']
-fieldnames11 = [' ', 'L', 'L', 'L', 'L', 'L', 'L']
+worksheet.set_column('B:K', 14)
+fieldnames10 = ['Flute1', 'Capacitor (pF)', 'VdP Poly (Ω/sq)', 'VdP strip (Ω/sq)', 'VdP stop (Ω/sq)', 'FET V_TH (V)', 'MOS V_fb (V)', 'VdP Poly (Ω/sq)', 'VdP strip (Ω/sq)', 'VdP stop (Ω/sq)', 'FET V_TH (V)']
+fieldnames11 = [' ', 'L', 'L', 'L', 'L', 'L', 'L', 'R', 'R', 'R', 'R']
 for i10,data10 in enumerate(fieldnames10):
     worksheet.write(0,i10,data10,tformat)
 for i11,data11 in enumerate(fieldnames11):
@@ -856,6 +856,25 @@ for i in range(7):
     worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
 
 worksheet = workbook.add_worksheet('Acceptance')
-
+tformat = workbook.add_format({'bold': True})
+tformat.set_align('center')
+mformat = workbook.add_format({'bold': True})
+worksheet.set_row(0, 40)
+worksheet.set_column('A:A', 14) 
+worksheet.set_column('B:C', 15)
+worksheet.set_column('D:D', 21)
+worksheet.set_column('E:F', 16)
+worksheet.set_column('G:G', 14)
+worksheet.set_column('H:H', 19)
+fieldnames50 = ['', 'Diode full \ndepletion voltage \nVfd < 350 V', 'Flatband voltage \n|Vfb| < 5 V', 'Thin oxide \nthickness (capacitance) \nCAC > 1.2 pF cm-2 μm-1', 'Strip implant \nRstrip < 250 Ω/sq', 'Aluminium strip \nRalu < 30 mΩ/sq', 'Bulk resistivity \n> 2.7 kΩ.cm', 'Dielectric breakdown \nVdiel > 150 V']
+fieldnames51 = [' ', 'L', 'L', 'L', 'L', 'L', 'L', 'L']
+for i50,data50 in enumerate(fieldnames50):
+    worksheet.write(0,i50,data50,tformat)
+for i51,data51 in enumerate(fieldnames51):
+    worksheet.write(1,i51,data51,tformat)
+for i52,data52 in enumerate(fieldhms):
+    worksheet.write(i52+2,0,data52)
+    for j53 in range(1,8):
+        worksheet.write(i52+2,j53,'OK')
 
 workbook.close()
