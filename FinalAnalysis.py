@@ -23,6 +23,9 @@ from matplotlib.figure import Figure
 import matplotlib.pyplot as plt
 import numpy as np
 import statistics
+import scipy
+from scipy.stats import median_abs_deviation
+
 
 batchString = input("Batch number: ")
 #For example: 34357
@@ -94,8 +97,9 @@ for i in range(6):
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
     stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
     worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
+    madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+    worksheet.write(nbHM+4, i+1, madMSD, sci_format)
      
-
 worksheet = workbook.add_worksheet('Flute2')
 tformat = workbook.add_format({'bold': True})
 tformat.set_align('center')
@@ -134,12 +138,15 @@ for i in range(5):
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
     stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
     worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
+    madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x!= 0.0])
+    worksheet.write(nbHM+4, i+1, madMSD, sci_format)
 aDataCol = [item[5] for item in a2Data]
 medMSD = statistics.median(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+2, 6, medMSD)
 stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+3, 6, stdMSD)
-
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 6, madMSD)
 
 worksheet = workbook.add_worksheet('Flute3')
 tformat = workbook.add_format({'bold': True})
@@ -794,28 +801,37 @@ medMSD = statistics.median(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+2, 1, medMSD, sci_format)
 stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+3, 1, stdMSD, sci_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 1, madMSD, sci_format)
 aDataCol = [item[1] for item in a3Data]
 medMSD = statistics.median(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+2, 2, medMSD)
 stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+3, 2, stdMSD)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 2, madMSD)
 aDataCol = [item[2] for item in a3Data]
 medMSD = statistics.median(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+2, 3, medMSD, int_format)
 stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+3, 3, stdMSD, int_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 3, madMSD, int_format)
 aDataCol = [item[3] for item in a3Data]
 medMSD = statistics.median(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+2, 4, medMSD, vdp_metal_format)
 stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+3, 4, stdMSD, vdp_metal_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 4, madMSD, vdp_metal_format)
 for i in range(4, 8):
     aDataCol = [item[i] for item in a3Data]
     medMSD = statistics.median(x for x in aDataCol if x != 0.0)
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
     stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
     worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
-    
+    madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+    worksheet.write(nbHM+4, i+1, madMSD, sci_format)
     
 worksheet = workbook.add_worksheet('Flute4')
 tformat = workbook.add_format({'bold': True})
@@ -854,6 +870,8 @@ for i in range(7):
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
     stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0 and x != 5.0)
     worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
+    madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+    worksheet.write(nbHM+4, i+1, madMSD, sci_format)
 
 worksheet = workbook.add_worksheet('Acceptance')
 tformat = workbook.add_format({'bold': True})
