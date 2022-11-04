@@ -870,7 +870,7 @@ for i in range(7):
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
     stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0 and x != 5.0)
     worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
-    madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+    madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0 and x != 5.0])
     worksheet.write(nbHM+4, i+1, madMSD, sci_format)
 
 worksheet = workbook.add_worksheet('Acceptance')
