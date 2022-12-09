@@ -40,7 +40,8 @@ for filename in os.listdir(mainDir):
     if filename.endswith(".xlsx"):
         new_string = filename.replace(".xlsx", "")
         if "summary" not in new_string:
-            fieldhms.append(new_string)
+            if "_R" not in new_string:
+                fieldhms.append(new_string)
 fieldhms.sort()
 
 lengthArray = len(fieldhms)
@@ -85,13 +86,21 @@ a1Data = []
 for jname,dataname in enumerate(fname):
     xl_workbook = xlrd.open_workbook(dataname)
     sheet = xl_workbook.sheet_by_index(0)
-    a1 = [sheet.cell_value(rowx=1, colx=1), sheet.cell_value(rowx=2, colx=1), sheet.cell_value(rowx=3, colx=1), sheet.cell_value(rowx=4, colx=1), sheet.cell_value(rowx=5, colx=1), -sheet.cell_value(rowx=6, colx=1)]
+    a1 = [sheet.cell_value(rowx=1, colx=1), sheet.cell_value(rowx=2, colx=1), sheet.cell_value(rowx=3, colx=1), sheet.cell_value(rowx=4, colx=1), sheet.cell_value(rowx=5, colx=1), -sheet.cell_value(rowx=6, colx=1), 0, 0, 0, 0]
     a1Data.append(a1)
     for col_num1, col_data1 in enumerate(a1):
         worksheet.write(row_num1+2, col_num1+1, col_data1, sci_format)
+    dataname_R = dataname.replace('.xlsx', '_R.xlsx')
+    if path.exists(dataname_R):
+        xl_workbook_R = xlrd.open_workbook(dataname_R)
+        sheet_R = xl_workbook_R.sheet_by_index(0)
+        a1 = [sheet.cell_value(rowx=1, colx=1), sheet.cell_value(rowx=2, colx=1), sheet.cell_value(rowx=3, colx=1), sheet.cell_value(rowx=4, colx=1), sheet.cell_value(rowx=5, colx=1), -sheet.cell_value(rowx=6, colx=1), sheet_R.cell_value(rowx=2, colx=1), sheet_R.cell_value(rowx=3, colx=1), sheet_R.cell_value(rowx=4, colx=1), sheet_R.cell_value(rowx=5, colx=1)]
+        a1Data.append(a1)
+        for col_num1, col_data1 in enumerate(a1):
+            worksheet.write(row_num1+2, col_num1+1, col_data1, sci_format)
     row_num1 = row_num1 + 1
 nbHM = row_num1
-for i in range(6):
+for i in range(10):
     aDataCol = [item[i] for item in a1Data]
     medMSD = statistics.median(x for x in aDataCol if x != 0.0)
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
