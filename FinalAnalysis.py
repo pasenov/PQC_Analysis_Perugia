@@ -63,6 +63,7 @@ for jname,dataname in enumerate(fieldhms):
     fname.append(dataname + ".xlsx")
     
 sci_format = workbook.add_format({'num_format': '###########0.00'})
+dec_format = workbook.add_format({'num_format': '###########0.0'})
 vdp_metal_format = workbook.add_format({'num_format': '###########0.0000'})
 int_format = workbook.add_format({'num_format': '###########0'})
 
@@ -100,14 +101,76 @@ for jname,dataname in enumerate(fname):
             worksheet.write(row_num1+2, col_num1+1, col_data1, sci_format)
     row_num1 = row_num1 + 1
 nbHM = row_num1
-for i in range(10):
-    aDataCol = [item[i] for item in a1Data]
-    medMSD = statistics.median(x for x in aDataCol if x != 0.0)
-    worksheet.write(nbHM+2, i+1, medMSD, sci_format)
-    stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
-    worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
-    madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
-    worksheet.write(nbHM+4, i+1, madMSD, sci_format)
+aDataCol = [item[0] for item in a1Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 1, medMSD, sci_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 1, stdMSD, sci_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 1, madMSD, sci_format)
+aDataCol = [item[1] for item in a1Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 2, medMSD, int_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 2, stdMSD, int_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 2, madMSD, int_format)
+aDataCol = [item[2] for item in a1Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 3, medMSD, sci_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 3, stdMSD, sci_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 3, madMSD, sci_format)
+aDataCol = [item[3] for item in a1Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 4, medMSD, int_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 4, stdMSD, int_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 4, madMSD, int_format)
+aDataCol = [item[4] for item in a1Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 5, medMSD, sci_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 5, stdMSD, sci_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 5, madMSD, sci_format)
+aDataCol = [item[5] for item in a1Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 6, medMSD, sci_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 6, stdMSD, sci_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 6, madMSD, sci_format)
+aDataCol = [item[6] for item in a1Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 7, medMSD, int_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 7, stdMSD, int_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 7, madMSD, int_format)
+aDataCol = [item[7] for item in a1Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 8, medMSD, sci_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 8, stdMSD, sci_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 8, madMSD, sci_format)
+aDataCol = [item[8] for item in a1Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 9, medMSD, int_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 9, stdMSD, int_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 9, madMSD, int_format)
+aDataCol = [item[9] for item in a1Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 10, medMSD, sci_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 10, stdMSD, sci_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 10, madMSD, sci_format)
      
 worksheet = workbook.add_worksheet('Flute2')
 tformat = workbook.add_format({'bold': True})
@@ -141,7 +204,21 @@ for jname,dataname in enumerate(fname):
         worksheet.write(row_num2+2, col_num2+1, col_data2, sci_format)
     worksheet.write(row_num2+2, 6, adiel2)
     row_num2 = row_num2 + 1
-for i in range(5):
+aDataCol = [item[0] for item in a2Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 1, medMSD, sci_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 1, stdMSD, sci_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x!= 0.0])
+worksheet.write(nbHM+4, 1, madMSD, sci_format)
+aDataCol = [item[1] for item in a2Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 2, medMSD, int_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 2, stdMSD, int_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x!= 0.0])
+worksheet.write(nbHM+4, 2, madMSD, int_format)
+for i in range(2, 5):
     aDataCol = [item[i] for item in a2Data]
     medMSD = statistics.median(x for x in aDataCol if x != 0.0)
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
@@ -807,11 +884,11 @@ for jname,dataname in enumerate(fname):
 nbHM = row_num3
 aDataCol = [item[0] for item in a3Data]
 medMSD = statistics.median(x for x in aDataCol if x != 0.0)
-worksheet.write(nbHM+2, 1, medMSD, sci_format)
+worksheet.write(nbHM+2, 1, medMSD, int_format)
 stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
-worksheet.write(nbHM+3, 1, stdMSD, sci_format)
+worksheet.write(nbHM+3, 1, stdMSD, int_format)
 madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
-worksheet.write(nbHM+4, 1, madMSD, sci_format)
+worksheet.write(nbHM+4, 1, madMSD, int_format)
 aDataCol = [item[1] for item in a3Data]
 medMSD = statistics.median(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+2, 2, medMSD)
@@ -833,14 +910,35 @@ stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
 worksheet.write(nbHM+3, 4, stdMSD, vdp_metal_format)
 madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
 worksheet.write(nbHM+4, 4, madMSD, vdp_metal_format)
-for i in range(4, 8):
+aDataCol = [item[4] for item in a3Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 5, medMSD, int_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 5, stdMSD, int_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 5, madMSD, int_format)
+aDataCol = [item[5] for item in a3Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 6, medMSD, sci_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 6, stdMSD, sci_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 6, madMSD, sci_format)
+for i in range(6, 7):
     aDataCol = [item[i] for item in a3Data]
     medMSD = statistics.median(x for x in aDataCol if x != 0.0)
-    worksheet.write(nbHM+2, i+1, medMSD, sci_format)
+    worksheet.write(nbHM+2, i+1, medMSD, dec_format)
     stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
-    worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
+    worksheet.write(nbHM+3, i+1, stdMSD, dec_format)
     madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
-    worksheet.write(nbHM+4, i+1, madMSD, sci_format)
+    worksheet.write(nbHM+4, i+1, madMSD, dec_format)
+aDataCol = [item[7] for item in a3Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+2, 8, medMSD, int_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0)
+worksheet.write(nbHM+3, 8, stdMSD, int_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0])
+worksheet.write(nbHM+4, 8, madMSD, int_format)
     
 worksheet = workbook.add_worksheet('Flute4')
 tformat = workbook.add_format({'bold': True})
@@ -873,7 +971,14 @@ for jname,dataname in enumerate(fname):
         worksheet.write(row_num4+2, col_num4+3, col_data4, sci_format)
     row_num4 = row_num4 + 1
 nbHM = row_num4
-for i in range(7):
+aDataCol = [item[0] for item in a4Data]
+medMSD = statistics.median(x for x in aDataCol if x != 0.0 and x != 5.0)
+worksheet.write(nbHM+2, 1, medMSD, dec_format)
+stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0 and x != 5.0)
+worksheet.write(nbHM+3, 1, stdMSD, dec_format)
+madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0 and x != 5.0])
+worksheet.write(nbHM+4, 1, madMSD, dec_format)
+for i in range(1, 3):
     aDataCol = [item[i] for item in a4Data]
     medMSD = statistics.median(x for x in aDataCol if x != 0.0 and x != 5.0)
     worksheet.write(nbHM+2, i+1, medMSD, sci_format)
@@ -881,6 +986,14 @@ for i in range(7):
     worksheet.write(nbHM+3, i+1, stdMSD, sci_format)
     madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0 and x != 5.0])
     worksheet.write(nbHM+4, i+1, madMSD, sci_format)
+for i in range(3, 7):
+    aDataCol = [item[i] for item in a4Data]
+    medMSD = statistics.median(x for x in aDataCol if x != 0.0 and x != 5.0)
+    worksheet.write(nbHM+2, i+1, medMSD, int_format)
+    stdMSD = statistics.stdev(x for x in aDataCol if x != 0.0 and x != 5.0)
+    worksheet.write(nbHM+3, i+1, stdMSD, int_format)
+    madMSD = statistics.median([abs(x - medMSD) for x in aDataCol if x != 0.0 and x != 5.0])
+    worksheet.write(nbHM+4, i+1, madMSD, int_format)
 
 worksheet = workbook.add_worksheet('Acceptance')
 tformat = workbook.add_format({'bold': True})
@@ -901,7 +1014,7 @@ for i51,data51 in enumerate(fieldnames51):
     worksheet.write(1,i51,data51,tformat)
 for i52,data52 in enumerate(fieldhms):
     worksheet.write(i52+2,0,data52)
-    for j53 in range(1,8):
+    for j53 in range(1, 8):
         worksheet.write(i52+2,j53,'OK')
 
 workbook.close()
